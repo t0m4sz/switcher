@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  switcher:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lms-switcher
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+        - /volume2/docker/switcher/scripts:/scripts
+        - /volume2/docker/lms/config/setup:/lms_setup
+        - /volume2/docker/switcher/log:/log
+        - /volume2/docker/switcher/app:/app        # ← pliki aplikacji z dysku
+        - /app/node_modules                        # ← node_modules z obrazu (nie nadpisuje)

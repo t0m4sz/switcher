@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LMS Switcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rack">
+
+  <!-- header -->
+  <div class="rack-header">
+    <h1>LMS / SWITCHER</h1>
+    <div class="led" id="led"></div>
+  </div>
+
+  <!-- status -->
+  <div class="status-panel">
+    <div class="status-label">ostatnie wykonanie</div>
+    <div class="status-value" id="statusValue">—</div>
+    <div class="status-time" id="statusTime"></div>
+  </div>
+
+  <!-- buttons -->
+  <div class="button-panel">
+    <button class="script-btn" id="btn1" onclick="runScript(1)">
+      <span class="btn-label">Gesemann, Linear, Gain -1</span>
+      <span class="btn-status" id="bs1"></span>
+    </button>
+    <button class="script-btn" id="btn2" onclick="runScript(2)">
+      <span class="btn-label">Gesemann, Intermediate, Gain -1</span>
+      <span class="btn-status" id="bs2"></span>
+    </button>
+    <button class="script-btn" id="btn3" onclick="runScript(3)">
+      <span class="btn-label">Gesemann, Minimum, Gain -1</span>
+      <span class="btn-status" id="bs3"></span>
+    </button>
+    <button class="script-btn" id="btn11" onclick="runScript(11)">
+      <span class="btn-label">Gesemann, Minimum, Gain -1, 93%</span>
+      <span class="btn-status" id="bs11"></span>
+    </button>
+     <button class="script-btn" id="btn4" onclick="runScript(4)">
+      <span class="btn-label">Gesemann, Linear, Gain -2</span>
+      <span class="btn-status" id="bs4"></span>
+    </button>
+     <button class="script-btn" id="btn5" onclick="runScript(5)">
+      <span class="btn-label">Gesemann, Intermediate, Gain -2</span>
+      <span class="btn-status" id="bs5"></span>
+    </button>
+     <button class="script-btn" id="btn6" onclick="runScript(6)">
+      <span class="btn-label">Gesemann, Minimum, Gain -2</span>
+      <span class="btn-status" id="bs6"></span>
+    </button>
+     <button class="script-btn" id="btn7" onclick="runScript(7)">
+      <span class="btn-label">Shibata, Linear, Gain -1</span>
+      <span class="btn-status" id="bs7"></span>
+    </button>
+     <button class="script-btn" id="btn8" onclick="runScript(8)">
+      <span class="btn-label">Shibata, Intermediate, Gain -1</span>
+      <span class="btn-status" id="bs8"></span>
+    </button>
+     <button class="script-btn" id="btn9" onclick="runScript(9)">
+      <span class="btn-label">Shibata, Minimum, Gain -1</span>
+      <span class="btn-status" id="bs9"></span>
+    </button>
+     <button class="script-btn" id="btn10" onclick="runScript(10)">
+      <span class="btn-label">Improved-e-weighted, Minimum, Gain -1</span>
+      <span class="btn-status" id="bs10"></span>
+    </button>
+     </button>
+     <button class="script-btn" id="btn12" onclick="runScript(12)">
+      <span class="btn-label">Triangular, Minimum, Gain -1</span>
+      <span class="btn-status" id="bs12"></span>
+    </button>
+     <button class="script-btn" id="btn13" onclick="runScript(13)">
+      <span class="btn-label">Shaped, Minimum, Gain -1</span>
+      <span class="btn-status" id="bs13"></span>
+    </button>
+  </div>
+
+  <!-- footer -->
+  <div class="rack-footer">
+    <span>NODE / EXPRESS</span>
+    <span id="footerTime"></span>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
