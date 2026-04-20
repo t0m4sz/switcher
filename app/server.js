@@ -55,7 +55,7 @@ app.post('/run/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
   const label = (req.body && req.body.label) ? req.body.label : `skrypt${id}`;
 
-  const scriptPath = `/scripts/copy${id}.sh`;
+  const scriptPath = `/scripts/skrypt${id}.sh`;
 
   if (!fs.existsSync(scriptPath)) {
     const msg = `ERROR: Script not found: ${scriptPath}`;
@@ -63,7 +63,7 @@ app.post('/run/:id', (req, res) => {
     return res.status(500).json({ ok: false, message: msg });
   }
 
-  exec(`bash ${scriptPath}`, (error, stdout, stderr) => {
+  exec(`bash /scripts/copy.sh ${id}`, (error, stdout, stderr) => {
     if (error) {
       const msg = `ERROR: ${label} - ${error.message}${stderr ? ' | stderr: ' + stderr.trim() : ''}`;
       writeLog(msg);
