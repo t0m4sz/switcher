@@ -2,7 +2,7 @@
 SOX=/lms/Bin/x86_64-linux/sox
 FLAC=/lms/Bin/x86_64-linux/flac
 LOG=/config/logs/lms_convert.log
-
+# Gesemann, Linear, 95%
 SR="$1"
 BD="$2"
 CH="$3"
