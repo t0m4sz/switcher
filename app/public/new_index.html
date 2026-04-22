@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LMS Switcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rack">
+
+  <!-- header -->
+  <div class="rack-header">
+    <h1>LMS / SWITCHER</h1>
+    <div class="led" id="led"></div>
+  </div>
+
+  <!-- status -->
+  <div class="status-panel">
+    <div class="status-label">ostatnie wykonanie</div>
+    <div class="status-value" id="statusValue">—</div>
+    <div class="status-time" id="statusTime"></div>
+  </div>
+
+  <!-- custom panel -->
+  <div class="custom-panel">
+    <div class="custom-row">
+
+      <div class="custom-field">
+        <label class="custom-label">Faza</label>
+        <select class="custom-select" id="selPhase">
+          <option value="-L">-L</option>
+          <option value="-M">-M</option>
+          <option value="-I">-I</option>
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label class="custom-label">Bandwidth</label>
+        <select class="custom-select" id="selBw">
+          <!-- wypełnione przez JS -->
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label class="custom-label">Gain</label>
+        <select class="custom-select" id="selGain">
+          <!-- wypełnione przez JS -->
+        </select>
+      </div>
+
+      <div class="custom-field custom-field--dither">
+        <label class="custom-label">Dither</label>
+        <select class="custom-select" id="selDither">
+          <option value="dither -f gesemann">gesemann</option>
+          <option value="dither -f shibata">shibata</option>
+          <option value="dither -f low-shibata">low-shibata</option>
+          <option value="dither -f high-shibata">high-shibata</option>
+          <option value="dither -f lipshitz">lipshitz</option>
+          <option value="dither -f improved-e-weighted">improved-e-w</option>
+          <option value="dither -f modified-e-weighted">modified-e-w</option>
+          <option value="dither -f f-weighted">f-weighted</option>
+          <option value="dither -S">-S</option>
+          <option value="dither">dither</option>
+        </select>
+      </div>
+
+      <button class="custom-btn" id="customBtn" onclick="runCustom()">OK</button>
+
+    </div>
+  </div>
+
+  <!-- buttons -->
+  <div class="button-panel">
+
+    <div class="btn-group">
+      <span class="btn-group-label">Linear</span>
+      <button class="script-btn" id="btn1" onclick="runScript(1)">
+        <span class="btn-label">skrypt1</span>
+        <span class="btn-status" id="bs1"></span>
+      </button>
+      <button class="script-btn" id="btn2" onclick="runScript(2)">
+        <span class="btn-label">skrypt2</span>
+        <span class="btn-status" id="bs2"></span>
+      </button>
+      <button class="script-btn" id="btn3" onclick="runScript(3)">
+        <span class="btn-label">skrypt3</span>
+        <span class="btn-status" id="bs3"></span>
+      </button>
+    </div>
+
+    <div class="btn-group">
+      <span class="btn-group-label">Minimum</span>
+      <button class="script-btn" id="btn4" onclick="runScript(4)">
+        <span class="btn-label">skrypt4</span>
+        <span class="btn-status" id="bs4"></span>
+      </button>
+      <button class="script-btn" id="btn5" onclick="runScript(5)">
+        <span class="btn-label">skrypt5</span>
+        <span class="btn-status" id="bs5"></span>
+      </button>
+    </div>
+
+    <div class="btn-group">
+      <span class="btn-group-label">Inne</span>
+      <button class="script-btn" id="btn6" onclick="runScript(6)">
+        <span class="btn-label">skrypt6</span>
+        <span class="btn-status" id="bs6"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- footer -->
+  <div class="rack-footer">
+    <span>NODE / EXPRESS</span>
+    <span id="footerTime"></span>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

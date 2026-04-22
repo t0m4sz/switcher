@@ -25,6 +25,54 @@
     <div class="status-time" id="statusTime"></div>
   </div>
 
+  <!-- custom panel -->
+  <div class="custom-panel">
+    <div class="custom-row">
+
+      <div class="custom-field">
+        <label class="custom-label">Faza</label>
+        <select class="custom-select" id="selPhase">
+          <option value="-L">-L</option>
+          <option value="-M">-M</option>
+          <option value="-I">-I</option>
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label class="custom-label">Bandwidth</label>
+        <select class="custom-select" id="selBw">
+          <!-- wypełnione przez JS -->
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label class="custom-label">Gain</label>
+        <select class="custom-select" id="selGain">
+          <!-- wypełnione przez JS -->
+        </select>
+      </div>
+
+      <div class="custom-field custom-field--dither">
+        <label class="custom-label">Dither</label>
+        <select class="custom-select" id="selDither">
+          <option value="dither -f gesemann">gesemann</option>
+          <option value="dither -f shibata">shibata</option>
+          <option value="dither -f low-shibata">low-shibata</option>
+          <option value="dither -f high-shibata">high-shibata</option>
+          <option value="dither -f lipshitz">lipshitz</option>
+          <option value="dither -f improved-e-weighted">improved-e-w</option>
+          <option value="dither -f modified-e-weighted">modified-e-w</option>
+          <option value="dither -f f-weighted">f-weighted</option>
+          <option value="dither -S">-S</option>
+          <option value="dither">dither</option>
+        </select>
+      </div>
+
+      <button class="custom-btn" id="customBtn" onclick="runCustom()">OK</button>
+
+    </div>
+  </div>
+
   <!-- buttons -->
   <div class="button-panel">
 

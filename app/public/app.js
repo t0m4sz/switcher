@@ -1,12 +1,28 @@
+// ── init dropdowns ───────────────────────────────────────────────
+(function initDropdowns() {
+  const bwSel = document.getElementById('selBw');
+  for (let i = 95; i >= 80; i--) {
+    const opt = document.createElement('option');
+    opt.value = String(i);
+    opt.textContent = `-b ${i}`;
+    bwSel.appendChild(opt);
+  }
+
+  const gainSel = document.getElementById('selGain');
+  for (let i = 1; i <= 10; i++) {
+    const val = -(i * 0.5);
+    const opt = document.createElement('option');
+    opt.value = String(val);
+    opt.textContent = `${val}`;
+    gainSel.appendChild(opt);
+  }
+})();
+
 // ── active button ────────────────────────────────────────────────
 function setActiveButton(label) {
   document.querySelectorAll('.script-btn').forEach(btn => {
     const btnLabel = btn.querySelector('.btn-label').textContent.trim();
-    if (btnLabel === label) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
+    btn.classList.toggle('active', btnLabel === label);
   });
 }
 
@@ -33,6 +49,41 @@ function setStatus(scriptName, timestamp, isError) {
     const d = new Date(timestamp);
     st.textContent = d.toLocaleString('pl-PL', { hour12: false });
   }
+}
+
+// ── run custom ───────────────────────────────────────────────────
+async function runCustom() {
+  const btn    = document.getElementById('customBtn');
+  const phase  = document.getElementById('selPhase').value;
+  const bw     = document.getElementById('selBw').value;
+  const gain   = document.getElementById('selGain').value;
+  const dither = document.getElementById('selDither').value;
+
+  btn.classList.add('running');
+  btn.textContent = '...';
+
+  // zdejmij podświetlenie z przycisków skryptów
+  document.querySelectorAll('.script-btn').forEach(b => b.classList.remove('active'));
+
+  try {
+    const res  = await fetch('/run/custom', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phase, bw, gain, dither })
+    });
+    const data = await res.json();
+
+    if (data.ok) {
+      setStatus(data.last, new Date().toISOString(), false);
+    } else {
+      setStatus('Custom — BŁĄD', new Date().toISOString(), true);
+    }
+  } catch (e) {
+    setStatus('Custom — BŁĄD POŁĄCZENIA', new Date().toISOString(), true);
+  }
+
+  btn.classList.remove('running');
+  btn.textContent = 'OK';
 }
 
 // ── run script ───────────────────────────────────────────────────
